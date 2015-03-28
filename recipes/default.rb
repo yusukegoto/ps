@@ -54,17 +54,14 @@ start-sleep -Seconds 30
   PS
 end
 
-minute_after = (Time.now + 2 * 60).strftime('%H:%M')
-
 windows_task 'install 7zip' do
   action [:create, :enable]
-  command "powershell.exe -WindowStyle Normal -File #{ps1_path}"
+  command "powershell.exe -WindowStyle Hidden -File #{ps1_path}"
   user node['ps']['user']
   password node['ps']['password']
   frequency :once
   interactive_enabled true
-  start_time minute_after
+  start_time lazy { (Time.now + 1 * 60).strftime('%H:%M') } # 1min
   run_level :highest
 end
 
-log "---- Install Task will be executed at #{minute_after} ----"
