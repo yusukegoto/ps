@@ -20,6 +20,8 @@ WindowsマシンへのGUIインストーラを利用したレシピの検証で�
 
 ## 参考
 
+[Sendkyes](https://msdn.microsoft.com/ja-jp/library/cc364423.aspx)
+
 [Managing Windows Servers with Chef](https://www.packtpub.com/networking-and-servers/managing-windows-servers-chef)
 
 [ShowWindowの定数](https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548%28v=vs.85%29.aspx)
