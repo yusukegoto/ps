@@ -27,11 +27,14 @@ $showWindowAsync = Add-Type -MemberDefinition $showWindowAsyncDef -Name "Win32Sh
 
 
 # main
+
 $installer = start-process #{ msi_path } -PassThru
-start-sleep -Seconds 5
+start-sleep -Seconds 5 # wait till installer to be lauched
 
-$showWindowAsync::ShowWindowAsync($installer.MainWindowHandle, 1) # SW_SHOWNORMAL
-
+# force activate
+$showWindowAsync::ShowWindowAsync($installer.MainWindowHandle, 6) # SW_MINIMIZE
+start-sleep -Seconds 1
+$showWindowAsync::ShowWindowAsync($installer.MainWindowHandle, 9) # SW_RESTORE
 start-sleep -Seconds 1
 
 [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
